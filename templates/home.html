@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <main>
+        <div class="row">
+            <div class="col-9">
+
+                {% for post in post_list %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title"><a href="{% url 'post_detail' post.pk%}">{{ post.title }}</a></h2>
+                        <p>{{post.body|truncatewords:100}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-3">
+                <h3>About Me</h3>
+                <figure>
+                    <img class="img-responsive"
+                        src="https://via.placeholder.com/150x150.png?text=Blogger photo placeholder" alt="Blogger photo"
+                        height="auto" width="100%">
+                    <figcaption>Image label</figcaption>
+                </figure>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.</p>
+                <details>
+                    <summary>Contact Details</summary>
+                    <li>Phone: 555-555-5555</li>
+                    <li>Email: user@domain.com</li>
+                    <li>Post: PO Box 123, Anytown ST 12345</li>
+                </details>
+            </div>
+        </div>
+    </main>
+</div>
+{% include "footer.html" %}
+{% endblock content %}
